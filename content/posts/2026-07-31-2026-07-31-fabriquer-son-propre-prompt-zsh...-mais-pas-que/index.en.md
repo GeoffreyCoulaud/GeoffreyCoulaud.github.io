@@ -1,9 +1,9 @@
 +++
 title = "Crafting your own Zsh prompt... And more"
 date = "2026-07-31"
-description = "At the depreciation of the zsh powerlevel10k theme, I realized that my perfect terminal prompt didn't exist yet. So I explored Oh-My-Posh to build my own, and I didn't stop at the shell."
+description = ""
 aliases = []
-draft = true
+draft = false
 +++
 
 Around 2024, I came across an unexpected message: [powerlevel10k](https://github.com/romkatv/powerlevel10k) is deprecated. That's a real bummer, because it's been my shell prompt for years. So I look for alternatives, prompts in [the almost infinite library of oh-my-zsh](https://github.com/ohmyzsh/ohmyzsh/wiki/Themes), but no matter what, I can't find one. At the same time, I can't escape the scope creep of my own demands: p10k was _good_ but not _perfect_. And I'd like perfect.
@@ -12,9 +12,9 @@ Around 2024, I came across an unexpected message: [powerlevel10k](https://github
 
 It's expected that nothing suits me, because "perfect" is very personal.
 
-I like having all the information right in front of my eyes.
-I intend on taking advantage of a modern screen, with plenty of space to spare.
-So my list of requirements becomes clearer:
+I like having all the information right in front of my eyes.  
+I intend on taking advantage of a modern screen, with plenty of space to spare.  
+So my list of requirements becomes clearer:  
 
 - Display the current user and hostname
 - Indicate if we're on an SSH session
@@ -29,7 +29,7 @@ In the end, I realize I'm going to have to create this theme myself, because no 
 
 ## What are my options?
 
-There's a catch: I hate Bash/Zsh syntax with a passion. 
+There's a catch: I hate Bash/Zsh syntax with a passion.  
 So that immediately rules out creating an oh-my-zsh theme.
 
 Yes, these languages are _practical_, but that doesn't make them pleasant or maintainable. Worse, "one-liners" are everywhere. Yes, it's very handy when you need to find a command you'll reuse regularly, but no, it's not suitable for a script of even 50 lines. Writing bash is simple. Writing maintainable bash is another story.
@@ -40,11 +40,11 @@ Both support Zsh (my shell of choice) as well as many other shells. However, my 
 
 ## My Zsh prompt
 
-After a few hours of tinkering based on [the emodipt-extend prompt](https://ohmyposh.dev/docs/themes#emodipt-extend) from the OMP theme gallery, I got a satisfactory result.
+After a few hours of tinkering based on [the emodipt-extend prompt](https://ohmyposh.dev/docs/themes#emodipt-extend) from the OMP theme gallery, I got a satisfactory result. Let me introduce you to [yellow-frey](https://github.com/GeoffreyCoulaud/omp-theme-yellow-frey), a 3-line yellow and orange prompt, with icons, and that (most importantly) meets all of my criteria.
 
-Let me introduce you to [yellow-frey](https://github.com/GeoffreyCoulaud/omp-theme-yellow-frey), a 3-line yellow and orange prompt, with icons, and that (most importantly) meets all of my criteria.
 ![Screenshot of Ghostty, showing the oh-my-posh yellow-frey theme](omp-yellow-frey-shell-prompt.png)
-OMP's big strength is its JSON-based segment configuration.
+
+OMP's big strength is its JSON-based segment configuration.  
 The documentation is clear and exhaustive, and it was simple and pleasant to use.
 
 ## My Claude Code status line
@@ -63,9 +63,9 @@ And if you pay attention to the information in this screenshot, you'll notice a 
 
 The interesting detail here is that the usage bars for 5 hours and 7 days are filled in, even though z.ai doesn't provide this information in their Anthropic-compatible API... But how is that possible?
 
-I have to admit it.
-I had to do something horrible.
-I wrote a _bash script_.
+I have to admit it.  
+I had to do something horrible.  
+I wrote a _bash script_.  
 
 <insert horrified scream>
 
@@ -82,9 +82,9 @@ On the other hand, for me, the ceiling of the GLM Coder Pro plan is a bit too lo
 I often hit the 5-hour and weekly limits at z.ai, whereas that rarely happens at Anthropic. If I had to give an estimate, I'd say the plan is about 30% shorter. _For someone looking for a plan between Claude Pro and Claude Max 5x, GLM Coder Pro will probably do the trick._
 
 > [!WARNING]
-> On 2026-07-30, the existing GLM Coder plans were superseded.
-> At the same time, my plan was labeled "Legacy Plan V2".
-> These new plans aren't as attractive.
+> On 2026-07-30, the existing GLM Coder plans were superseded.  
+> At the same time, my plan was labeled "Legacy Plan V2".  
+> These new plans aren't as attractive.  
 > They have roughly half the limits, and a cost per credit about 2.4x higher than the plan I was able to test.
 
 I'll write a second article to discuss my GLM experience in more detail.

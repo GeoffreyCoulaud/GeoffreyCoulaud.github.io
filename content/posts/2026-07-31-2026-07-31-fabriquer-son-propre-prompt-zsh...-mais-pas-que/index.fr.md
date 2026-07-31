@@ -1,9 +1,9 @@
 +++
 title = "Fabriquer son propre prompt Zsh... Mais pas que"
 date = "2026-07-31"
-description = "À la dépréciation du thème zsh powerlevel10k, j’ai compris que mon prompt terminal parfait n’existait pas encore. J’ai donc exploré Oh-My-Posh pour construire le mien, et je ne me suis pas arrêté au shell."
+description = ""
 aliases = []
-draft = true
+draft = false
 +++
 
 Vers 2024, je me suis confronté à un message inattendu : [powerlevel10k](https://github.com/romkatv/powerlevel10k) est déprécié. C'est la tuile, parce que c'est mon prompt shell depuis des années. Alors je cherche des alternatives, des prompts dans [la bibliothèque presque infinie de oh-my-zsh](https://github.com/ohmyzsh/ohmyzsh/wiki/Themes) mais rien à faire, je ne trouve pas. En même temps, je n'échappe pas au scope creep de mes propres demandes : p10k était _bien_ mais pas _parfait_. Et moi, j'aimerais bien parfait.
@@ -12,9 +12,9 @@ Vers 2024, je me suis confronté à un message inattendu : [powerlevel10k](https
 
 C'est normal que rien ne me convienne, parce que "parfait" c'est très personnel.
 
-J'aime avoir toutes les informations sous les yeux.
-Je compte bien profiter d'un écran moderne, avec de la place à revendre.
-Alors ma liste de requirements se précise :
+J'aime avoir toutes les informations sous les yeux.  
+Je compte bien profiter d'un écran moderne, avec de la place à revendre.  
+Alors ma liste de requirements se précise :  
 
 - Afficher l'utilisateur et le hostname courant
 - Indiquer si on est sur une session SSH
@@ -29,7 +29,7 @@ Au final, je me rends bien compte que je vais devoir le créer moi-même ce thè
 
 ## Quelles sont mes options ?
 
-Il y a un hic : je déteste la syntaxe Bash/Zsh du fond du coeur. 
+Il y a un hic : je déteste la syntaxe Bash/Zsh du fond du coeur.  
 Donc ça élimine d'office de créer un thème oh-my-zsh.
 
 Oui ces langages sont _pratiques_, ça ne les rend pas agréables pour autant, ni maintenables. Pire, les "one-liner" font légion. Oui c'est très pratique quand on doit retrouver une commande qu'on va réutiliser régulièrement, non ce n'est pas adapté pour un script de ne serait-ce que 50 lignes. Ecrire du bash, c'est simple. Ecrire du bash maintenable, c'est compliqué.
@@ -40,11 +40,11 @@ Tous deux supportent Zsh (mon shell de prédilection) ainsi que de nombreux autr
 
 ## Mon prompt Zsh
 
-En l'espace de quelques heures de bidouillage en me basant sur [le prompt emodipt-extend](https://ohmyposh.dev/docs/themes#emodipt-extend) de la galerie de thèmes OMP, j'ai obtenu un résultat satisfaisant.
+En l'espace de quelques heures de bidouillage en me basant sur [le prompt emodipt-extend](https://ohmyposh.dev/docs/themes#emodipt-extend) de la galerie de thèmes OMP, j'ai obtenu un résultat satisfaisant. Je vous présente [yellow-frey](https://github.com/GeoffreyCoulaud/omp-theme-yellow-frey), un prompt jaune et orange de 3 lignes, avec des icones, et surtout qui répond à tous mes critères.
 
-Je vous présente [yellow-frey](https://github.com/GeoffreyCoulaud/omp-theme-yellow-frey), un prompt jaune et orange de 3 lignes, avec des icones, et surtout qui répond à tous mes critères.
 ![Capture d'écran de Ghostty, montrant le thème oh-my-posh yellow-frey](omp-yellow-frey-shell-prompt.png)
-Le gros point fort d'OMP c'est sa configuration par segments en JSON.
+
+Le gros point fort d'OMP c'est sa configuration par segments en JSON.  
 La documentation est claire et exhaustive, c'était simple et agréable à utiliser.
 
 ## Ma ligne de statut Claude Code
@@ -63,9 +63,9 @@ Et si vous prêtez attention aux informations dans ce screenshot, vous remarquer
 
 Le détail intéressant ici, c'est que les barres d'usage à 5 heures et 7 jours sont renseignées, alors que z.ai ne fournit pas ces informations dans leur API compatible Anthropic... Mais comment est-ce possible ?
 
-Je dois l'avouer.
-J'ai dû faire quelque chose d'horrible.
-J'ai écrit un _script bash_.
+Je dois l'avouer.  
+J'ai dû faire quelque chose d'horrible.  
+J'ai écrit un _script bash_.  
 
 <insérer cri horifié>
 
@@ -82,9 +82,9 @@ En revanche, pour moi le plafond du plan GLM Coder Pro est un peu trop bas.
 J'atteinds souvent les limites 5h et hebdomadaires chez z.ai alors que ça n'arrive que rarement chez Anthropic. Si je devais donner une estimation, je dirais que le plan est environ 30% plus court. _Pour quelqu'un qui cherche un plan entre Claude Pro et Claude Max 5x, GLM Coder Pro fera probablement l'affaire._
 
 > [!WARNING]
-> Le 2026-07-30 les plans GLM Coder existants on été supplantés.
-> Par la même occasion, mon plan a été annoté "Legacy Plan V2".
-> Ces nouveaux plans ne sont pas aussi intéressants.
+> Le 2026-07-30 les plans GLM Coder existants on été supplantés.  
+> Par la même occasion, mon plan a été annoté "Legacy Plan V2".  
+> Ces nouveaux plans ne sont pas aussi intéressants.  
 > Ils ont des limites environ moitié plus basses, et un coût par crédit environ 2.4x plus cher que sur le plan que j'ai pu expérimenter.
 
 Je ferais un second article pour parler plus en détail de mon expérience GLM.
