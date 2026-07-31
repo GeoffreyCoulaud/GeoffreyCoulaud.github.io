@@ -6,7 +6,7 @@ aliases = []
 draft = false
 +++
 
-Vers 2024, je me suis confronté à un message inattendu : [powerlevel10k](https://github.com/romkatv/powerlevel10k) est déprécié. C'est la tuile, parce que c'est mon prompt shell depuis des années. Alors je cherche des alternatives, des prompts dans [la bibliothèque presque infinie de oh-my-zsh](https://github.com/ohmyzsh/ohmyzsh/wiki/Themes) mais rien à faire, je ne trouve pas. En même temps, je n'échappe pas au scope creep de mes propres demandes : p10k était _bien_ mais pas _parfait_. Et moi, j'aimerais bien parfait.
+En 2024, je me suis confronté à un message inattendu : [powerlevel10k](https://github.com/romkatv/powerlevel10k) est déprécié. C'est la tuile, parce que c'est mon prompt shell depuis des années. Alors je cherche des alternatives, des prompts dans [la bibliothèque presque infinie de oh-my-zsh](https://github.com/ohmyzsh/ohmyzsh/wiki/Themes) mais rien à faire, je ne trouve pas. En même temps, je n'échappe pas au scope creep de mes propres demandes : p10k était _bien_ mais pas _parfait_. Et moi, j'aimerais bien parfait.
 
 ## Qu'est-ce que je veux, au juste ?
 

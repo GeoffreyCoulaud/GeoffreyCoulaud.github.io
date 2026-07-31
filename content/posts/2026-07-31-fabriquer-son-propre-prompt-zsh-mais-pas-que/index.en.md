@@ -6,7 +6,7 @@ aliases = []
 draft = false
 +++
 
-Around 2024, I came across an unexpected message: [powerlevel10k](https://github.com/romkatv/powerlevel10k) is deprecated. That's a real bummer, because it's been my shell prompt for years. So I look for alternatives, prompts in [the almost infinite library of oh-my-zsh](https://github.com/ohmyzsh/ohmyzsh/wiki/Themes), but no matter what, I can't find one. At the same time, I can't escape the scope creep of my own demands: p10k was _good_ but not _perfect_. And I'd like perfect.
+In 2024, I came across an unexpected message: [powerlevel10k](https://github.com/romkatv/powerlevel10k) is deprecated. That's a real bummer, because it's been my shell prompt for years. So I look for alternatives, prompts in [the almost infinite library of oh-my-zsh](https://github.com/ohmyzsh/ohmyzsh/wiki/Themes), but no matter what, I can't find one. At the same time, I can't escape the scope creep of my own demands: p10k was _good_ but not _perfect_. And I'd like perfect.
 
 ## What do I actually want?
 
