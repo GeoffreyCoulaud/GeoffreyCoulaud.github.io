@@ -91,7 +91,7 @@ I'll write a second article to discuss my GLM experience in more detail.
 
 ## Conclusion
 
-It was fun customizing my prompt and status bar, and I use the result daily as the prompt on all my machines.
+It was fun customizing my prompt and status bar, and I use the result daily on all my machines.
 
 The [IKEA effect](https://en.wikipedia.org/wiki/IKEA_effect) probably plays a part, but I find customizing my work tools very rewarding. Well, within reason. I haven't yet deemed it viable to create a dotfiles collection that covers my entire work environment.
 

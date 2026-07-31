@@ -91,7 +91,7 @@ Je ferais un second article pour parler plus en détail de mon expérience GLM.
 
 ## Conclusion
 
-C'était amusant de customiser mon prompt et ma status bar, et j'utilise le résultat au quotidien comme prompt sur toutes mes machines.
+C'était amusant de customiser mon prompt et ma status bar, et j'utilise le résultat au quotidien sur toutes mes machines.
 
 L'[effet Ikea](https://fr.wikipedia.org/wiki/Effet_Ikea) joue sûrement un peu, mais je trouve très gratifiant de customiser ses outils de travail. Enfin, dans la limite du raisonnable. Je n'ai pas encore jugé viable de me créer une collection de dotfiles qui recouvre tout mon environnement de travail.
 
