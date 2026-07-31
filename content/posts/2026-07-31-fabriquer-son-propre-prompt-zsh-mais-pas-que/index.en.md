@@ -57,7 +57,7 @@ At first, I tried customizing my status line by hacking around, but nothing was 
 
 So with a bit of effort, I created my own status line for Claude Code. While at it, I might as well reuse the design produced for the shell prompt, and add harness-specific metadata... And there it is, a statusline for Claude Code:
 
-![](omp-yellow-frey-claude-status-line.png)
+![Screenshot of Ghostty, showing the oh-my-posh yellow-frey claude code status bar](omp-yellow-frey-claude-status-line.png)
 
 And if you pay attention to the information in this screenshot, you'll notice a little curiosity: This statusline indicates `glm-5.2` as the model. That's not new; you can absolutely use Anthropic's harness with third-party providers, even if you lose some official integrations.
 

@@ -57,7 +57,7 @@ Au début, j'ai essayé de customiser ma status line en bricolant, mais rien de 
 
 Alors avec un peu d'effort j'ai créé ma propre status line pour claude code. Tant qu'à faire, autant réutiliser le design produit pour le prompt shell, et ajouter des métadonnées spécifiques au harnais... Et voilà, une statusline pour Claude Code :
 
-![](omp-yellow-frey-claude-status-line.png)
+![Capture d'écran de Ghostty, montrant la barre de statut claude code oh-my-posh yellow-frey](omp-yellow-frey-claude-status-line.png)
 
 Et si vous prêtez attention aux informations dans ce screenshot, vous remarquerez une petite curiosité : Cette statusline indique `glm-5.2` comme modèle. Ce n'est pas nouveau, on peut tout à fait utiliser le harnais d'Anthropic avec des fournisseurs tiers, même si on perd quelques intégrations officielles.
 
