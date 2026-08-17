@@ -1,6 +1,8 @@
 # AGENTS.md — geoffreycoulaud.github.io
 
-Hugo blog, bilingual FR/EN, theme [Stack](https://github.com/CaiJimmy/hugo-theme-stack) v4. Deployed to GitHub Pages.
+Hugo blog, bilingual FR/EN, theme [Stack](https://github.com/CaiJimmy/hugo-theme-stack) v4. Deployed to GitLab Pages.
+
+The repository has two remotes: `github` (mirror) and `gitlab` (deploys). Only pushes to `gitlab` trigger a deployment.
 
 ## For AI agents
 
@@ -24,7 +26,7 @@ git config core.hooksPath .githooks   # enables pre-commit hook
 ```bash
 hugo serve          # Dev server with hot reload (drafts not shown unless hugo serve -D)
 hugo                # Production build into public/
-hugo --gc --minify  # CI command (same as GitHub Actions)
+hugo --gc --minify  # CI command (same as GitLab CI)
 ```
 
 `public/` and `resources/` are build artifacts — gitignored.
@@ -84,7 +86,7 @@ Optional comment (markdown).
 
 ## Key configuration
 
-- **`enableGitInfo = true`**: `.Lastmod` derived from git history. CI uses `fetch-depth: 0`.
+- **`enableGitInfo = true`**: `.Lastmod` derived from git history. CI uses `GIT_DEPTH: 0`.
 - **`defaultContentLanguageInSubdir = false`**: French pages at `/`, English pages at `/en/`.
 - **Taxonomies are enabled** (`disableKinds` removed). Tags only apply to shares — blog posts don't use them.
 - **Permalinks**: `posts = "/posts/:slug/"`, `shares = "/shares/:contentbasename/"`, `page = "/:slug/"`.
@@ -124,16 +126,16 @@ Files: `static/admin/index.html` (CDN loader) + `static/admin/config.yml` (colle
 
 **Using the CMS:**
 - **Local**: `hugo serve`, open `/admin/index.html` in Chromium, click "Work with Local Repository"
-- **Production**: `/admin/` → "Sign In with Token" → GitHub PAT → commits directly to `main`
+- **Production**: `/admin/` → "Sign In with Token" → GitLab PAT → commits directly to `main`
 
-**Backend**: `github` with `auth_methods: [token]`.
+**Backend**: `gitlab` (`GeoffreyCoulaud/personal-website`) with `auth_methods: [token]`. It must point at the GitLab remote: a commit pushed to GitHub deploys nothing.
 
 ## Content validation
 
 **Single source of truth:** `scripts/validate-content.sh`. Called with no arguments at CI, called with staged files from the pre-commit hook.
 
 - **Pre-commit hook** (`.githooks/pre-commit`): thin wrapper — passes `git diff --cached` file list to `scripts/validate-content.sh`.
-- **CI** (`.github/workflows/github-pages.yml`): runs `scripts/validate-content.sh` before `hugo --gc --minify`.
+- **CI** (`.gitlab-ci.yml`): the `validate` job runs `scripts/validate-content.sh` in the `test` stage, before the `pages` job builds.
 
 Rules enforced:
 - **Posts**: both `index.fr.md` + `index.en.md`, matching dates, folder name starts with date
@@ -141,7 +143,20 @@ Rules enforced:
 
 ## Deployment
 
-Push to `main` — GitHub Actions builds with `hugo --gc --minify` and deploys to GitHub Pages.
+Push to `main` on the `gitlab` remote. `.gitlab-ci.yml` runs two jobs, both restricted to the default branch:
+
+- **`validate`** (stage `test`), image `bash:5.3.15-alpine3.24`: runs `scripts/validate-content.sh`.
+- **`pages`** (stage `deploy`), image `ghcr.io/gohugoio/hugo:v0.164.0`: runs `hugo --gc --minify` and publishes `public/` to GitLab Pages.
+
+Both images are pinned and their entrypoint is neutralised (`entrypoint: [""]`), otherwise the CI shell never starts.
+
+Notes on the Hugo image:
+
+- It ships Go, git and Dart Sass. Go is required: the theme is a Go module, not a submodule.
+- It has no `bash`, hence the separate image for `validate`.
+- It runs as uid 1000, which cannot write in the root-owned `/builds` directory, hence `docker: user: root` on the job.
+
+Custom domain `geoffrey-coulaud.fr` is configured in the project's Pages settings, with a Let's Encrypt certificate issued after DNS verification.
 
 ## i18n
 

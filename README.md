@@ -29,10 +29,10 @@ Ouvrir `http://localhost:1313/admin/index.html` dans un navigateur Chromium (Chr
 
 Une fois le site déployé, le CMS est accessible à l'adresse `/admin/`. Se connecter avec le bouton **"Sign In with Token"** :
 
-1. Suivre le lien affiché pour générer un [personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) GitHub (scopes pré-remplis)
+1. Suivre le lien affiché pour générer un [personal access token](https://docs.gitlab.com/user/profile/personal_access_tokens/) GitLab (scopes pré-remplis)
 2. Copier le token et le coller dans la boîte de dialogue
 
-Le CMS lit et commit directement sur le dépôt (`main`).
+Le CMS lit et commit directement sur le dépôt GitLab (`main`), ce qui déclenche un déploiement.
 
 ### Articles
 
@@ -151,4 +151,10 @@ Le français est la langue par défaut (racine du site), l'anglais est en `/en/`
 
 ## Déployer
 
-Push sur `main` — GitHub Actions build avec `hugo --gc --minify` et déploie sur GitHub Pages.
+Le dépôt a deux remotes : `github` (miroir) et `gitlab` (déploiement).
+
+Un push sur `main` du remote `gitlab` déclenche le pipeline défini dans `.gitlab-ci.yml` : validation du contenu, build avec `hugo --gc --minify`, publication de `public/` sur GitLab Pages. Un push sur `github` seul ne déploie rien.
+
+```bash
+git push gitlab main
+```

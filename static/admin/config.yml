@@ -1,6 +1,6 @@
 backend:
-  name: github
-  repo: geoffreycoulaud/geoffreycoulaud.github.io
+  name: gitlab
+  repo: GeoffreyCoulaud/personal-website
   branch: main
   auth_methods: [token]
 

@@ -1,0 +1,35 @@
+stages: [test, deploy]
+
+# Deploys only happen on main, like the GitHub workflow this replaces.
+workflow:
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+
+default:
+  interruptible: true
+
+# The official Hugo image ships no bash, and validate-content.sh is not POSIX sh.
+validate:
+  stage: test
+  image:
+    name: bash:5.3.15-alpine3.24
+    entrypoint: [""]
+  script:
+    - bash scripts/validate-content.sh
+
+pages:
+  stage: deploy
+  image:
+    name: ghcr.io/gohugoio/hugo:v0.164.0
+    entrypoint: [""]
+    docker:
+      user: root # image runs as uid 1000, which cannot write in /builds
+  variables:
+    GIT_DEPTH: 0 # enableGitInfo needs the full history
+  script:
+    - hugo --gc --minify
+  pages:
+    publish: public
+  environment:
+    name: production
+    url: $CI_PAGES_URL
